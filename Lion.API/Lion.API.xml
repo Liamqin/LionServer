@@ -1,0 +1,252 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Lion.API</name>
+    </assembly>
+    <members>
+        <member name="T:Lion.API.Controllers.APIBaseController">
+            <summary>
+            基础操作控制器
+            </summary>
+        </member>
+        <member name="M:Lion.API.Controllers.APIBaseController.#ctor(Microsoft.Extensions.Options.IOptions{Lion.Model.Setting})">
+            <summary>
+            构造函数获取配置参数
+            </summary>
+        </member>
+        <member name="M:Lion.API.Controllers.APIBaseController.Serch(System.Object)">
+            <summary>
+            数据查询操作
+            </summary>
+            <remarks>
+            例 api/ApiUnified/Search
+            {
+            "table":"aaa"
+            ,"para":"*"
+            ,"pageindex":1
+            ,"pagesize":10
+            ,"字段名":"内容（模糊查询，逗号隔开为单字段多内容查询）"
+            }
+            </remarks>
+            <param name="dy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.APIBaseController.Save(System.Object)">
+            <summary>
+            数据保存或更新操作
+            </summary>
+            <remarks>
+            例：api/ApiUnified/Save
+            {
+            "table":"aaa"
+            ,"字段名":"内容"
+            ,"id":"主键（空为新增）"
+            }
+            注：新增时必填字段不能为空，必填字段详见下方Model
+            </remarks>
+            <param name="dy"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.APIBaseController.Del(System.Object)">
+            <summary>
+            删除数据
+            </summary>
+            <remarks>
+            例：api/ApiUnitfied/Del
+            {
+            "table":"aaa"
+            ,"guids":"1,2,3"
+            }
+            </remarks>
+            <param name="dy"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lion.API.Controllers.DepartsController">
+            <summary>
+            部门管理接口
+            </summary>
+        </member>
+        <member name="M:Lion.API.Controllers.DepartsController.DepartTree(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="comid"></param>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lion.API.Controllers.ExcelOper">
+            <summary>
+            导入Excel转换
+            </summary>
+        </member>
+        <member name="M:Lion.API.Controllers.ExcelOper.#ctor(Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            构造函数，获取路径参数
+            </summary>
+            <param name="hostingEnvironment"></param>
+        </member>
+        <member name="M:Lion.API.Controllers.ExcelOper.Import(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            根据上传的Excel文件保存为DataTable并返回
+            </summary>
+            <param name="file">Http里的文件流</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.ExcelOper.Export(System.Data.DataTable,System.String)">
+            <summary>
+            根据datatable转存为Excel并返回路径提供下载。
+            </summary>
+            <param name="dt">数据源</param>
+            <param name="s_FileName">文件名</param>
+            <returns>保存成功的路径</returns>
+        </member>
+        <member name="T:Lion.API.Controllers.MenusController">
+            <summary>
+            菜单管理接口
+            </summary>
+        </member>
+        <member name="M:Lion.API.Controllers.MenusController.MenusTree(Lion.API.Controllers.SerchModel)">
+            <summary>
+            根据公司id和roleid 获取菜单树
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.MenusController.GetMenu">
+            <summary>
+            根据角色id获取Tree
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Lion.API.Controllers.SerchModel">
+            <summary>
+            接口参数归类
+            </summary>
+        </member>
+        <member name="P:Lion.API.Controllers.SerchModel.comid">
+            <summary>
+            公司id
+            </summary>
+        </member>
+        <member name="P:Lion.API.Controllers.SerchModel.roleid">
+            <summary>
+            角色ID
+            </summary>
+        </member>
+        <member name="P:Lion.API.Controllers.SerchModel.page">
+            <summary>
+            第几页
+            </summary>
+        </member>
+        <member name="P:Lion.API.Controllers.SerchModel.limit">
+            <summary>
+            每页多少 默认10
+            </summary>
+        </member>
+        <member name="T:Lion.API.Controllers.Res">
+            <summary>
+            统一返回格式类
+            </summary>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.Success(System.String)">
+            <summary>
+            返回成功数据
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.Success(System.Object)">
+            <summary>
+            返回成功数据
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.Success(System.Object,System.Int32)">
+            <summary>
+            返回成功数据和数量
+            </summary>
+            <param name="value">数据</param>
+            <param name="rowCount">数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.LayuiTable(System.Object,System.Int32)">
+            <summary>
+            返回表数据和数量
+            </summary>
+            <param name="value">数据</param>
+            <param name="rowCount">数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.LayuiTable(System.Object)">
+            <summary>
+            返回表数据
+            </summary>
+            <param name="value">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.Success(System.Object,System.String,System.Int32)">
+            <summary>
+            返回成功数据、数量、备注
+            </summary>
+            <param name="value">数据</param>
+            <param name="remark">备注描述</param>
+            <param name="rowCount">数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:Lion.API.Controllers.Res.Fail(System.Object)">
+            <summary>
+            返回失败结果
+            </summary>
+            <param name="value">失败原因</param>
+            <returns></returns>
+        </member>
+        <member name="T:Lion.API.Controllers.ValuesController">
+            <summary>
+            测试接口
+            </summary>
+        </member>
+        <member name="T:Lion.API.HttpHeaderOperation">
+            <summary>
+            控制器添加header 权限验证
+            </summary>
+        </member>
+        <member name="M:Lion.API.HttpHeaderOperation.Apply(Swashbuckle.AspNetCore.Swagger.Operation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            4.0接口方法的实现
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
+        <member name="T:Lion.API.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Lion.API.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Lion.API.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Lion.API.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Lion.API.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+    </members>
+</doc>
